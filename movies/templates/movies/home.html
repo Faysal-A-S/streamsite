@@ -48,7 +48,7 @@
       <div class="latest">
         <h1>Latest</h1>
       </div>
-     <div class="row">
+     <div class="row justify-content-center">
 
    
           <!-- Sliding  bar -->
@@ -95,24 +95,24 @@
       <h1>All</h1>
     </div>
       <!-- All Videos -->
-      <div class="row " style="margin-left: 15px !important;">
+      
+        <div class="row justify-content-center">
        
-        {% for movie in movies %}
+          {% for movie in movies %}
+          
         
-      
-      <div class="card mt-5 mb-2 col-2 " style="width: 18rem; margin-left: 10px; ">
-        <a href="{% url 'video' movie.id %}"><img src="{{movie.image.url}}" class="img-thumbnail"></a>
-        <div class="card-body">
-         <h5  class="card-title">{{movie.title}}</h5>
-         <div class="truncateLongTexts">
-          {{movie.description}}
-         </div>
-        
+        <div class="card mt-5 mb-2 col-xl-2 col-lg-2 col-md-2  col-sm-6 col-xs-12 " style="width: 18rem; margin-left: 10px; ">
+          <a href="{% url 'video' movie.id %}"><img src="{{movie.image.url}}" class="img-thumbnail"></a>
+          <div class="card-body">
+           <h5  class="card-title">{{movie.title}}</h5>
+           <div class="truncateLongTexts">
+            {{movie.description}}
+           </div>
+          
+          </div>
         </div>
-      </div>
-      {% endfor %}
-      </div>
-      
+        {% endfor %}
+        </div>
       
 
 
