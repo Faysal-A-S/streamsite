@@ -16,39 +16,75 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 </head>
 <body >
-    <nav class="navbar navbar-expand-lg navbar-dark">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <a class="navbar-brand " href="{% url 'home'  %}">Streamer</a>
-      
-        <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-          <div class="col-md-8  mx-auto ">
-            <ul class="navbar-nav mr-auto mt-2 mt-lg-0 ">
-           
-              <li class="nav-item">
-                <a class="nav-link" href="/search/1/">Movies</a>
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand " href="{% url 'home'  %}">Streamer</a>
+  
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+      <div class="col-md-8  mx-auto ">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0 ">
+            <!--  MOVIES START-->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="/search/1/" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Movies</a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" href="#">HOLLYWOOD</a>
+              <a class="dropdown-item" href="#">BOLLYWOOD</a>
+              <a class="dropdown-item" href="#">AIMATION</a>
+              <a class="dropdown-item" href="#">FOREIGN</a>
+              <a class="dropdown-item" href="#">FRENCH</a>
+              <a class="dropdown-item" href="#">CHINESE</a>
+              <a class="dropdown-item" href="#">INDIAN BANGLA</a>
+              <a class="dropdown-item" href="#">ITALIAN</a>
+              <a class="dropdown-item" href="#">JAPANESE</a>
+              <a class="dropdown-item" href="#">KOREAN</a>
+              <a class="dropdown-item" href="#">RUSSIAN</a>
+              <a class="dropdown-item" href="#">TAMIL</a>
+              <a class="dropdown-item" href="#">ASIAN</a>
+            </div>
+            </li>
+                <!-- MOVIES END -->
+
+<!-- 
+                TV SERIES  START -->
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="/search/1/" id="navbarDropdownMenuLink1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">TV Series</a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink1">
+                <a class="dropdown-item" href="#">ENGLISH TV SERIES</a>
+                <a class="dropdown-item" href="#">KOREAN TV SERIES</a>
+                <a class="dropdown-item" href="#">HINDI TV SERIES</a>
+                <a class="dropdown-item" href="#">BENGALI TV SERIES</a>
+                <a class="dropdown-item" href="#">BENGALI NATOK</a>
+                <a class="dropdown-item" href="#">CHINESE</a>
+                <a class="dropdown-item" href="#">INDIAN BANGLA</a>
+              </div>
               </li>
-              <li class="nav-item">
-                <a class="nav-link " href="/search/2/">Animes</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/search/4/">TV-Series</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/search/3/">Drama</a>
-              </li>
-              
-            </ul>
-            
-          </div>
-          <form class="form-inline my-2 my-lg-0" action="." method="GET">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search"  name="search">
-            <button class="btn btn-danger  my-2 my-sm-0" type="button" onclick="searchMathod()"> <i class="fas fa-search"></i> Search</button>
-          </form>
-         
-        </div>
-      </nav>
+              <!-- TV SERIES END -->
+              <!-- GAMES START -->
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="/search/1/" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Games</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink2">
+                  <a class="dropdown-item" href="#">ONLINE GAMES</a>
+                  <a class="dropdown-item" href="#">PC GAMES</a>
+                  <a class="dropdown-item" href="#">ANDROID  GAMES</a>
+                </div>
+                </li>
+                <!-- GAMES END -->
+          <li class="nav-item">
+            <a class="nav-link" href="/search/3/">Software</a>
+          </li>
+          
+        </ul>
+        
+      </div>
+      <form class="form-inline my-2 my-lg-0" action="." method="GET">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search"  name="search">
+        <button class="btn btn-danger  my-2 my-sm-0" type="button" onclick="searchMathod()"> <i class="fas fa-search"></i> Search</button>
+      </form>
+     
+    </div>
+  </nav>
 
       <div class="row justify-content-center" style="margin-left: 15px !important;">
        

@@ -22,18 +22,54 @@
     <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
       <div class="col-md-8  mx-auto ">
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0 ">
-       
+            <!--  MOVIES START-->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="/search/1/" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Movies</a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" href="#">HOLLYWOOD</a>
+              <a class="dropdown-item" href="#">BOLLYWOOD</a>
+              <a class="dropdown-item" href="#">AIMATION</a>
+              <a class="dropdown-item" href="#">FOREIGN</a>
+              <a class="dropdown-item" href="#">FRENCH</a>
+              <a class="dropdown-item" href="#">CHINESE</a>
+              <a class="dropdown-item" href="#">INDIAN BANGLA</a>
+              <a class="dropdown-item" href="#">ITALIAN</a>
+              <a class="dropdown-item" href="#">JAPANESE</a>
+              <a class="dropdown-item" href="#">KOREAN</a>
+              <a class="dropdown-item" href="#">RUSSIAN</a>
+              <a class="dropdown-item" href="#">TAMIL</a>
+              <a class="dropdown-item" href="#">ASIAN</a>
+            </div>
+            </li>
+                <!-- MOVIES END -->
+
+<!-- 
+                TV SERIES  START -->
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="/search/1/" id="navbarDropdownMenuLink1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">TV Series</a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink1">
+                <a class="dropdown-item" href="#">ENGLISH TV SERIES</a>
+                <a class="dropdown-item" href="#">KOREAN TV SERIES</a>
+                <a class="dropdown-item" href="#">HINDI TV SERIES</a>
+                <a class="dropdown-item" href="#">BENGALI TV SERIES</a>
+                <a class="dropdown-item" href="#">BENGALI NATOK</a>
+                <a class="dropdown-item" href="#">CHINESE</a>
+                <a class="dropdown-item" href="#">INDIAN BANGLA</a>
+              </div>
+              </li>
+              <!-- TV SERIES END -->
+              <!-- GAMES START -->
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="/search/1/" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Games</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink2">
+                  <a class="dropdown-item" href="#">ONLINE GAMES</a>
+                  <a class="dropdown-item" href="#">PC GAMES</a>
+                  <a class="dropdown-item" href="#">ANDROID  GAMES</a>
+                </div>
+                </li>
+                <!-- GAMES END -->
           <li class="nav-item">
-            <a class="nav-link" href="/search/1/">Movies</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link " href="/search/2/">Animes</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/search/4/">TV-Series</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/search/3/">Drama</a>
+            <a class="nav-link" href="/search/3/">Software</a>
           </li>
           
         </ul>
@@ -63,7 +99,6 @@
 
 
 
-
       <div class="mt-5 text-center">
         <video style="width: 100%;  height:500px;"  controls >
             <source src="{{movie.video.url}}" type="video/mp4">
@@ -73,10 +108,41 @@
       </div>
       
       <div class="bg-white p-3" style="font-family: 'Roboto', sans-serif;">
-        <h5 style="font-weight: bolder;">Name: {{movie.title}}</h5>
-        <p><span style="font-weight: bolder;">Genre:</span> {{movie.genre}}</p>
-        <p><span style="font-weight: bolder;">Duration:</span> {{movie.duration}}</p>
-        <p><span style="font-weight: bolder;">Description:</span> {{movie.description}}</p>
+        
+        {% if title   %}
+        <h5 style="font-weight: bolder;">Name: {{title}}</h5>
+        {% endif %}
+          
+        
+        {% if description   %}
+        <p><span style="font-weight: bolder;">Description:</span> {{description}}</p>
+        {% endif %}
+         
+         {% if release_date %}
+         <p><span style="font-weight: bolder;">Release Date:</span> {{release_date}}.</p>
+         {% endif %}
+         {% if director %}
+         <p><span style="font-weight: bolder;">Director:</span> {{director}}.</p>
+         {% endif %}
+         {% if writer %}
+         <p><span style="font-weight: bolder;">Director:</span> {{director}}.</p>
+         {% endif %}
+         {% if stars %}
+         <p><span style="font-weight: bolder;">Casts:</span> 
+            {{stars}}.
+           </p>
+         {% endif %}
+          
+          {% if genres %}
+          <p><span style="font-weight: bolder;">Genre:</span> {{genres}}.</p>
+          {% endif %}
+                 
+        
+        <p><span style="font-weight: bolder;">Duration:</span> {{duration}}.</p>
+        
+        
+        
+        
       </div>
 
 

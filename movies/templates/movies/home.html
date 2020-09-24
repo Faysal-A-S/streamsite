@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="{% static 'css/main.css' %}">
     <link rel="stylesheet" href="{% static 'css/movie_card.css' %}">
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 </head>
 <body >
     <nav class="navbar navbar-expand-lg navbar-dark">
@@ -21,18 +22,54 @@
         <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
           <div class="col-md-8  mx-auto ">
             <ul class="navbar-nav mr-auto mt-2 mt-lg-0 ">
-           
+                <!--  MOVIES START-->
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="/search/1/" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Movies</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                  <a class="dropdown-item" href="#">HOLLYWOOD</a>
+                  <a class="dropdown-item" href="#">BOLLYWOOD</a>
+                  <a class="dropdown-item" href="#">AIMATION</a>
+                  <a class="dropdown-item" href="#">FOREIGN</a>
+                  <a class="dropdown-item" href="#">FRENCH</a>
+                  <a class="dropdown-item" href="#">CHINESE</a>
+                  <a class="dropdown-item" href="#">INDIAN BANGLA</a>
+                  <a class="dropdown-item" href="#">ITALIAN</a>
+                  <a class="dropdown-item" href="#">JAPANESE</a>
+                  <a class="dropdown-item" href="#">KOREAN</a>
+                  <a class="dropdown-item" href="#">RUSSIAN</a>
+                  <a class="dropdown-item" href="#">TAMIL</a>
+                  <a class="dropdown-item" href="#">ASIAN</a>
+                </div>
+                </li>
+                    <!-- MOVIES END -->
+
+<!-- 
+                    TV SERIES  START -->
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="/search/1/" id="navbarDropdownMenuLink1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">TV Series</a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink1">
+                    <a class="dropdown-item" href="#">ENGLISH TV SERIES</a>
+                    <a class="dropdown-item" href="#">KOREAN TV SERIES</a>
+                    <a class="dropdown-item" href="#">HINDI TV SERIES</a>
+                    <a class="dropdown-item" href="#">BENGALI TV SERIES</a>
+                    <a class="dropdown-item" href="#">BENGALI NATOK</a>
+                    <a class="dropdown-item" href="#">CHINESE</a>
+                    <a class="dropdown-item" href="#">INDIAN BANGLA</a>
+                  </div>
+                  </li>
+                  <!-- TV SERIES END -->
+                  <!-- GAMES START -->
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="/search/1/" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Games</a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink2">
+                      <a class="dropdown-item" href="#">ONLINE GAMES</a>
+                      <a class="dropdown-item" href="#">PC GAMES</a>
+                      <a class="dropdown-item" href="#">ANDROID  GAMES</a>
+                    </div>
+                    </li>
+                    <!-- GAMES END -->
               <li class="nav-item">
-                <a class="nav-link" href="/search/1/">Movies</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link " href="/search/2/">Animes</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/search/4/">TV-Series</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/search/3/">Drama</a>
+                <a class="nav-link" href="/search/3/">Software</a>
               </li>
               
             </ul>
@@ -45,6 +82,11 @@
          
         </div>
       </nav>
+     
+
+      
+
+
       <div class="latest">
         <h1>Latest</h1>
       </div>
@@ -63,7 +105,7 @@
             {% for movie in fmovies %} 
             <div class="carousel-item active">
               <a href="{% url 'video' movie.id %}">
-                <img class="d-block w-100" src="{{movie.image.url}}" class="img-thumbnail">
+                <img class="d-block w-100" src="{{movie.poster.url}}" class="img-thumbnail">
               </a>
             </div>
               {% endfor %}
@@ -71,7 +113,7 @@
               {% for movie in lmovies %}
               <div class="carousel-item">
                 <a href="{% url 'video' movie.id %}">
-                <img class="d-block w-100" src="{{movie.image.url}}" class="img-thumbnail" width="500px">
+                <img class="d-block w-100" src="{{movie.poster.url}}" class="img-thumbnail" width="500px">
                 </a>
               </div>
             {% endfor %}
@@ -102,9 +144,9 @@
           
         
         <div class="card mt-5 mb-2 col-xl-2 col-lg-2 col-md-2  col-sm-6 col-xs-12 " style="width: 18rem; margin-left: 10px; ">
-          <a href="{% url 'video' movie.id %}"><img src="{{movie.image.url}}" class="img-thumbnail"></a>
+          <a href="{% url 'video' movie.id %}"><img src="{{movie.poster.url}}" class="img-thumbnail"></a>
           <div class="card-body">
-           <h5  class="card-title text-center">{{movie.title}}</h5>
+           <h5  class="card-title text-center">{{movie.movietitle}}</h5>
            <!-- <div class="truncateLongTexts">
             {{movie.description}}
            </div> -->
