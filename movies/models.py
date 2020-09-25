@@ -57,10 +57,11 @@ class Allmovies(models.Model):
     class Meta:
         managed = False
         db_table = 'allmovies'
+    
     def __str__(self):
 
         return self.movietitle    
-
+    
 
 class DiskSetup(models.Model):
     path = models.CharField(db_column='Path', max_length=255)  # Field name made lowercase.

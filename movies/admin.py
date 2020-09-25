@@ -2,6 +2,8 @@ from django.contrib import admin
 from django.contrib.auth.models  import Group
 # Register your models here.
 from .models import Allmovies,Moviesgenre,Tvepisodes,Tvgenre,Tvseries
+class AllmoviesAdmin(admin.ModelAdmin):
+    exclude = ('moviehomepage',)
 
 admin.site.site_header = "SolutionTent Dashboard"
 

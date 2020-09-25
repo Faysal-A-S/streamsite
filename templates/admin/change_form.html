@@ -1,11 +1,37 @@
 {% extends 'admin/change_form.html' %}
 
-
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
 {% block submit_buttons_bottom %}
 {{ block.super }}
-<div class="submit-row">
+
+  <div class="row form-group">
+      
+        <div class="col-12">
+            <label for="moviehomepage">Movie IMDB URL:</label>
+            <input type="text" name="moviehomepage" id="moviehomepage">
+            <input type="submit" value="select Url" name="url">
+      </div>
+  
+      
     
-    <input type="button" value="select Url" name="url">
-</div>
-    
+      
+  </div>
+   
+ 
 {% endblock submit_buttons_bottom %}
+<script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+{% block admin_change_form_document_ready %}
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+<script>
+    $(document).on('submit','#allmovies_form',function(e){
+      e.preventDefault();
+      $.ajax({
+        type:'POST',
+        url:'admin/allmovies/add/',
+        data:{
+          moviehomepage:('#moviehomepage').val()
+        }
+      })
+    })
+</script>
+{% endblock %}  

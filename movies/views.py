@@ -1,4 +1,4 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect,HttpResponse
 from .models  import Allmovies,Moviesgenre,Tvepisodes,Tvgenre,Tvseries
 from  .test_imdb import webscrapper
 # Create your views here.
@@ -23,45 +23,64 @@ def home(request):
 def video(request,id):
     movie  = Allmovies.objects.get(pk = id)
     
-    link1 = movie.moviehomepage
+    # link1 = movie.moviehomepage
     
-    a=webscrapper(link1)
-    genres = a['genre']
-    genre =', '.join(genres)
-    sentence = a['stars']
-    star =", ".join(sentence)
-    print(a['video_length'])
-    context = {
+    # a=webscrapper(link1)
+    # genres = a['genre']
+    # genre =', '.join(genres)
+    # sentence = a['stars']
+    # star =", ".join(sentence)
+    # print(a['video_length'])
+    # context = {
+    #     'movie':movie,
+    #     'title': a['title'],
+    #     'description':a['description'],
+    #     'release_date':a['release_date'],
+    #     'director':a['director'],
+    #     'duration':a['video_length'],
+    #     'stars':star,
+    #     'genres':genre
+    # }
+    star  = movie.movieactors[:-1]
+    content = {
         'movie':movie,
-        'title': a['title'],
-        'description':a['description'],
-        'release_date':a['release_date'],
-        'director':a['director'],
-        'duration':a['video_length'],
+        'title':movie.movietitle,
+        'description':movie.moviestory,
+        'release_date':movie.movieyear,
+        'moviecatagory':movie.moviecategory,
+        'movierating':movie.movieratings,
         'stars':star,
-        'genres':genre
+        'moviegenre':movie.moviegenre
     }
-    return render(request,'movies/video.html',context)
+    return render(request,'movies/video.html',content)
 
 def search(request,id):
-    # movies = Movie.objects.filter(vtype= id)
+    movies = Allmovies.objects.filter(moviecategory= id).order_by('-id')
     # types = Type.objects.get(pk = id)     
-    # context = {
-    #     'movies':movies,
-    #     'types' :types
+    context = {
+        'movies':movies,
+        # 'types' :types
         
-    # }
-    return  render(request,'movies/search.html')    
+    }
+    return  render(request,'movies/search.html',context)    
 
 
 
 def searches(request,search):
 
     
-    #  movies = Movie.objects.filter(title__contains=search) 
-    #  context = {
-    #      'movies':movies
-    #  } 
-     return render(request,'movies/searches.html') 
+     movies = Allmovies.objects.filter(movietitle__icontains=search) 
+     context = {
+         'movies':movies
+     } 
+     return render(request,'movies/searches.html',context) 
   
-            
+def movieurl(request):
+    if request.method == 'POST':
+        moviehomepage = request.POST['moviehomepage']
+        saverecord = Allmovies()
+        saverecord.moviehomepage = moviehomepage
+        saverecord.save()
+        return HttpResponse('')
+
+
