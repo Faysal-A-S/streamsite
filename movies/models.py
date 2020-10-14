@@ -28,7 +28,7 @@ class Admin(models.Model):
 
 
 class Allmovies(models.Model):
-    movietitle = models.CharField(db_column='MovieTitle', max_length=255, blank=True, null=True)  # Field name made lowercase.
+    movietitle = models.CharField(db_column='MovieTitle', max_length=255, blank=True, null=True,default='Values')  # Field name made lowercase.
     movieyear = models.TextField(db_column='MovieYear', blank=True, null=True,default=2020)  # Field name made lowercase. This field type is a guess.
     movieid = models.CharField(db_column='MovieID', unique=True, max_length=55, blank=True, null=True)  # Field name made lowercase.
     moviequality = models.CharField(db_column='MovieQuality', max_length=55,blank=True, default=720)  # Field name made lowercase.
@@ -38,7 +38,7 @@ class Allmovies(models.Model):
     moviegenre = models.CharField(db_column='MovieGenre', max_length=255, blank=True, null=True)  # Field name made lowercase.
     moviedate = models.DateField(db_column='MovieDate', blank=True, null=True)  # Field name made lowercase.
     movielang = models.CharField(db_column='Movielang', max_length=55, blank=True, null=True)  # Field name made lowercase.
-    moviehomepage = models.CharField(db_column='Moviehomepage', max_length=255, blank=True, null=True)  # Field name made lowercase.
+      # Field name made lowercase.
     movieruntime = models.CharField(db_column='MovieRuntime', max_length=33, blank=True, null=True)  # Field name made lowercase.
     moviekeywords = models.TextField(db_column='MovieKeywords', blank=True, null=True)  # Field name made lowercase.
     moviestory = models.TextField(db_column='MovieStory', blank=True, null=True)  # Field name made lowercase.
@@ -46,11 +46,12 @@ class Allmovies(models.Model):
     moviesubtitle = models.TextField(db_column='MovieSubtitle', blank=True, null=True)  # Field name made lowercase.
     movieactors = models.TextField(db_column='MovieActors', blank=True, null=True)  # Field name made lowercase.
     moviesize = models.CharField(db_column='MovieSize', max_length=55, blank=True, null=True)  # Field name made lowercase.
-    poster = models.ImageField( upload_to="", blank=True)
+    poster = models.ImageField( upload_to="", default='juggernaut.jpg')
     uploadeduser = models.CharField(db_column='uploadedUser', max_length=55, blank=True, null=True)  # Field name made lowercase.
-    uploadtime = models.DateTimeField(db_column='uploadTime')  # Field name made lowercase.
+    uploadtime = models.DateTimeField(db_column='uploadTime',auto_now=True)  # Field name made lowercase.
     views = models.IntegerField(blank=True, null=True)
     published = models.IntegerField(default=0)
+    moviehomepage = models.CharField(db_column='Moviehomepage', max_length=255)
 
     
     
@@ -59,6 +60,9 @@ class Allmovies(models.Model):
         db_table = 'allmovies'
     
     def __str__(self):
+        if self.movietitle ==None:
+            self.movietitle ='Values'
+           
 
         return self.movietitle    
     
@@ -225,25 +229,25 @@ class Tvgenre(models.Model):
 
 
 class Tvseries(models.Model):
-    tvtitle = models.CharField(db_column='TVtitle', max_length=255)  # Field name made lowercase.
+    tvtitle = models.CharField(db_column='TVtitle', max_length=255,default='Values')  # Field name made lowercase.
     tvid = models.IntegerField(db_column='TVID', unique=True)  # Field name made lowercase.
-    tvcategory = models.CharField(db_column='TVcategory', max_length=55)  # Field name made lowercase.
-    tvtrailer = models.CharField(db_column='TVtrailer', max_length=255)  # Field name made lowercase.
-    tvratings = models.FloatField(db_column='TVRatings')  # Field name made lowercase.
-    tvgenre = models.CharField(db_column='TVgenre', max_length=255)  # Field name made lowercase.
-    tvrelease = models.IntegerField(db_column='TVrelease')  # Field name made lowercase.
-    tvlang = models.CharField(db_column='TVlang', max_length=155)  # Field name made lowercase.
-    tvhomepage = models.CharField(db_column='TVhomepage', max_length=155)  # Field name made lowercase.
-    tvruntime = models.CharField(db_column='TVruntime', max_length=55)  # Field name made lowercase.
-    tvkeywords = models.TextField(db_column='TVkeywords')  # Field name made lowercase.
-    tvstory = models.TextField(db_column='TVstory')  # Field name made lowercase.
-    tvactors = models.CharField(db_column='TVactors', max_length=255)  # Field name made lowercase.
-    tvposter = models.CharField(db_column='TVposter', max_length=255)  # Field name made lowercase.
-    uploadeduser = models.CharField(db_column='uploadedUser', max_length=55)  # Field name made lowercase.
-    uploadtime = models.DateTimeField(db_column='uploadTime')  # Field name made lowercase.
+    tvcategory = models.CharField(db_column='TVcategory', max_length=55,blank=True)  # Field name made lowercase.
+    tvtrailer = models.CharField(db_column='TVtrailer', max_length=255,blank=True)  # Field name made lowercase.
+    tvratings = models.FloatField(db_column='TVRatings',blank=True)  # Field name made lowercase.
+    tvgenre = models.CharField(db_column='TVgenre', max_length=255,blank=True)  # Field name made lowercase.
+    tvrelease = models.IntegerField(db_column='TVrelease',blank=True)  # Field name made lowercase.
+    tvlang = models.CharField(db_column='TVlang', max_length=155,blank=True)  # Field name made lowercase.
+    
+    tvruntime = models.CharField(db_column='TVruntime', max_length=55,blank=True)  # Field name made lowercase.
+    tvkeywords = models.TextField(db_column='TVkeywords',blank=True)  # Field name made lowercase.
+    tvstory = models.TextField(db_column='TVstory',blank=True)  # Field name made lowercase.
+    tvactors = models.CharField(db_column='TVactors', max_length=255,blank=True)  # Field name made lowercase.
+    tvposter = models.CharField(db_column='TVposter', max_length=255,blank=True)  # Field name made lowercase.
+    uploadeduser = models.CharField(db_column='uploadedUser', max_length=55, blank=True)  # Field name made lowercase.
+    uploadtime = models.DateTimeField(db_column='uploadTime',auto_now=True)  # Field name made lowercase.
     views = models.IntegerField()
     published = models.IntegerField()
-
+    tvhomepage = models.CharField(db_column='TVhomepage', max_length=155)  # Field name made lowercase.
     class Meta:
         managed = False
         db_table = 'tvseries'

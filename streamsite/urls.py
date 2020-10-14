@@ -25,5 +25,6 @@ urlpatterns = [
     path('search/<str:id>/',views.search, name = 'search'),
     path('searches/<search>',views.searches, name = 'searches'),
     path('video/<id>',views.video, name = 'video'),
-    path('admin/allmovies/add/',views.movieurl,name="movieurl"),
+    path('admin/movies/allmovies/<int:id>/change/',views.movieupdate,name = 'movieupdate')
+  
 ] + static(settings.MEDIA_URL,document_root = settings.MEDIA_ROOT)

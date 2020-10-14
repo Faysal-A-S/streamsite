@@ -154,10 +154,28 @@
           </div>
         </div>
         {% endfor %}
-        </div>
+        
+</div>
+
       
-
-
+<div class="row justify-content-center">
+  <div class="offset-2  col-3 justify-content-center">
+    <p style="color: white;"><i class="fas fa-video"></i> {{countmovies}} Movies</p>
+  </div>
+  <div class="col-3 justify-content-center">
+    <p style="color: white;"><i class="fas fa-video"></i>
+    {% if tvseries %}
+      {{tvseries}}
+    
+    {% else %}
+         0
+        {% endif %}
+       TV Series</p>
+  </div>
+  <div class="col-3 justify-content-center">
+    <p style="color: white;"><i class="fas fa-gamepad"></i> 0 Games</p>
+  </div>
+</div>
 
 
 

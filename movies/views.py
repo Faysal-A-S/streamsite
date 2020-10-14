@@ -1,13 +1,41 @@
-from django.shortcuts import render,redirect,HttpResponse
+from django.shortcuts import render,HttpResponse
 from .models  import Allmovies,Moviesgenre,Tvepisodes,Tvgenre,Tvseries
 from  .test_imdb import webscrapper
+from django.http import HttpResponseRedirect
 # Create your views here.
 def home(request):
     context = {
         'movies':Allmovies.objects.filter().order_by('-id'),
          'lmovies':Allmovies.objects.filter().order_by('-id')[1:3],
          'fmovies':Allmovies.objects.filter().order_by('-id')[:1],
+         'countmovies':Allmovies.objects.count(),
+         'tvseries':Tvseries.objects.count(),
     }
+      
+    if Allmovies.objects.filter(movietitle ='Values'):
+    
+        movie =Allmovies.objects.get(movietitle='Values')
+        link = movie.moviehomepage
+        a = webscrapper(link)
+        print('hello world')
+        genres = a['genre']
+        moviegenre =', '.join(genres)
+        sentence = a['stars']
+        moviestar =", ".join(sentence)
+            # print(a['video_length'])
+        movietitle = a['title']
+        moviedescription = a['description']
+        # moviedate = a['release_date']
+        movieruntime = a['video_length']
+        saverecord = movie
+        saverecord.movietitle = movietitle
+        saverecord.moviegenre = moviegenre
+        saverecord.movieactors=moviestar
+        saverecord.moviestory =moviedescription
+        # saverecord.moviedate = moviedate
+        saverecord.movieruntime = movieruntime
+        saverecord.save()
+    
     # context = {
     #     'movies':Movie.objects.filter().order_by('-id'),
     #     'lmovies':Movie.objects.filter().order_by('-id')[1:3],
@@ -75,12 +103,27 @@ def searches(request,search):
      } 
      return render(request,'movies/searches.html',context) 
   
-def movieurl(request):
-    if request.method == 'POST':
-        moviehomepage = request.POST['moviehomepage']
+def movieupdate(request,id=None):
+    if request.method=="POST":
+        movie =Allmovies.objects.get(pk=id)
+        link = movie.moviehomepage
+        a = webscrapper(link)
+        print('hello world')
+        genres = a['genre']
+        moviegenre =', '.join(genres)
+        sentence = a['stars']
+        moviestar =", ".join(sentence)
+        # print(a['video_length'])
+        movietitle = a['title']
+        moviedescription = a['description']
+        moviedate = a['release_date']
+        movieruntime = a['video_length']
         saverecord = Allmovies()
-        saverecord.moviehomepage = moviehomepage
+        saverecord.movietitle = movietitle
+        saverecord.moviegenre = moviegenre
+        saverecord.movieactors=moviestar
+        saverecord.moviestory =moviedescription
+        saverecord.moviedate = moviedate
+        saverecord.movieruntime = movieruntime
         saverecord.save()
-        return HttpResponse('')
-
-
+    return HttpResponseRedirect('/')
