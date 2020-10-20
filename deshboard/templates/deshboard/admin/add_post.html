@@ -1,0 +1,21 @@
+{% extends 'deshboard/base.html' %} {% block title %} Add post page {% endblock title %}
+{% block content %}
+<div class="container">
+  <div class="row">
+    <div class="col-12 col-sm-12 col-md-12 col-xl-10">
+      <h1>Add test post page</h1>
+      <br /><br /><br />
+      <form action="" method="POST" novalidate>
+        {% csrf_token %} 
+        <div class="card">
+          <div class="card-body">
+            {{ form.as_p }}
+          </div>
+        </div>
+        <button type="submit" class="btn btn-success">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock content %}
+<!--{{ form.as_p }}-->

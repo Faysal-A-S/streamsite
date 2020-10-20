@@ -195,8 +195,37 @@ class Todaypageviews(models.Model):
         db_table = 'todaypageviews'
 
 
+
+
+
+class Tvseries(models.Model):
+    tvtitle = models.CharField(db_column='TVtitle', max_length=255,default='Values')  # Field name made lowercase.
+    tvid = models.IntegerField(db_column='TVID', unique=True,primary_key=True)  # Field name made lowercase.
+    tvcategory = models.CharField(db_column='TVcategory', max_length=55,blank=True)  # Field name made lowercase.
+    tvtrailer = models.CharField(db_column='TVtrailer', max_length=255,blank=True)  # Field name made lowercase.
+    tvratings = models.FloatField(db_column='TVRatings',blank=True)  # Field name made lowercase.
+    tvgenre = models.CharField(db_column='TVgenre', max_length=255,blank=True)  # Field name made lowercase.
+    tvrelease = models.IntegerField(db_column='TVrelease',blank=True)  # Field name made lowercase.
+    tvlang = models.CharField(db_column='TVlang', max_length=155,blank=True)  # Field name made lowercase.
+    
+    tvruntime = models.CharField(db_column='TVruntime', max_length=55,blank=True)  # Field name made lowercase.
+    tvkeywords = models.TextField(db_column='TVkeywords',blank=True)  # Field name made lowercase.
+    tvstory = models.TextField(db_column='TVstory',blank=True)  # Field name made lowercase.
+    tvactors = models.CharField(db_column='TVactors', max_length=255,blank=True)  # Field name made lowercase.
+    tvposter = models.CharField(db_column='TVposter', max_length=255,blank=True)  # Field name made lowercase.
+    uploadeduser = models.CharField(db_column='uploadedUser', max_length=55, blank=True)  # Field name made lowercase.
+    uploadtime = models.DateTimeField(db_column='uploadTime',auto_now=True)  # Field name made lowercase.
+    views = models.IntegerField()
+    published = models.IntegerField()
+    tvhomepage = models.CharField(db_column='TVhomepage', max_length=155)  # Field name made lowercase.
+    class Meta:
+        managed = False
+        db_table = 'tvseries'
+    def __str__(self):
+        return self.tvtitle
+    
 class Tvepisodes(models.Model):
-    tvid = models.IntegerField(db_column='TVID')  # Field name made lowercase.
+    tvid = models.ForeignKey(Tvseries, on_delete=models.CASCADE,db_column='TVID')  # Field name made lowercase.
     episode_number = models.IntegerField()
     season_number = models.IntegerField()
     epiid = models.IntegerField(db_column='EPIID', unique=True)  # Field name made lowercase.
@@ -225,32 +254,4 @@ class Tvgenre(models.Model):
         db_table = 'tvgenre'
     def __str__(self):
         return self.name
-    
-
-
-class Tvseries(models.Model):
-    tvtitle = models.CharField(db_column='TVtitle', max_length=255,default='Values')  # Field name made lowercase.
-    tvid = models.IntegerField(db_column='TVID', unique=True)  # Field name made lowercase.
-    tvcategory = models.CharField(db_column='TVcategory', max_length=55,blank=True)  # Field name made lowercase.
-    tvtrailer = models.CharField(db_column='TVtrailer', max_length=255,blank=True)  # Field name made lowercase.
-    tvratings = models.FloatField(db_column='TVRatings',blank=True)  # Field name made lowercase.
-    tvgenre = models.CharField(db_column='TVgenre', max_length=255,blank=True)  # Field name made lowercase.
-    tvrelease = models.IntegerField(db_column='TVrelease',blank=True)  # Field name made lowercase.
-    tvlang = models.CharField(db_column='TVlang', max_length=155,blank=True)  # Field name made lowercase.
-    
-    tvruntime = models.CharField(db_column='TVruntime', max_length=55,blank=True)  # Field name made lowercase.
-    tvkeywords = models.TextField(db_column='TVkeywords',blank=True)  # Field name made lowercase.
-    tvstory = models.TextField(db_column='TVstory',blank=True)  # Field name made lowercase.
-    tvactors = models.CharField(db_column='TVactors', max_length=255,blank=True)  # Field name made lowercase.
-    tvposter = models.CharField(db_column='TVposter', max_length=255,blank=True)  # Field name made lowercase.
-    uploadeduser = models.CharField(db_column='uploadedUser', max_length=55, blank=True)  # Field name made lowercase.
-    uploadtime = models.DateTimeField(db_column='uploadTime',auto_now=True)  # Field name made lowercase.
-    views = models.IntegerField()
-    published = models.IntegerField()
-    tvhomepage = models.CharField(db_column='TVhomepage', max_length=155)  # Field name made lowercase.
-    class Meta:
-        managed = False
-        db_table = 'tvseries'
-    def __str__(self):
-        return self.tvtitle
-    
+        

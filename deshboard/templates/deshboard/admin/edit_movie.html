@@ -1,0 +1,53 @@
+{% extends 'deshboard/base.html' %} {% block title %} Edit Movie page {% endblock title %}
+{% block content %}
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col col-sm-10 col-md-8 col-xl-12">
+      <div class="card shadow-lg p-3 mb-5 rounded">
+        <form action="" method="POST" novalidate>
+          {% csrf_token %}
+          <div class="card-header bg-dark">
+            <div class="card-title text-center">
+              <h1 class="text-light">Edit Movie Item</h1>
+            </div>
+          </div>
+          <div class="card-body" style="padding-bottom: 50px">
+            <div style="padding-bottom: 20px">
+              <!--{{ form.as_p }}-->
+              {% for field in form %}
+              <div class="fieldWrapper">
+                {{ field.errors }} {{ field.label_tag }} {{ field }}
+                <br />
+                {% if field.help_text %}
+                <p class="help">{{ field.help_text|safe }}</p>
+                {% endif %}
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+          <div style="margin-left: 400px">
+            <input
+              id="submit"
+              type="submit"
+              class="btn btn-success"
+              value="Submit"
+            >
+              
+        
+            <a
+              id="cancel"
+              type="reset"
+              class="btn btn-danger"
+              value="Cancel"
+              href="{% url 'all_movies' %}"
+            >
+              
+              Cancel
+          </a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}

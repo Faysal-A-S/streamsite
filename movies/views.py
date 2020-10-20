@@ -50,25 +50,9 @@ def home(request):
 
 def video(request,id):
     movie  = Allmovies.objects.get(pk = id)
+    # tvseries  = Tvseries.objects.get(pk = id)
     
-    # link1 = movie.moviehomepage
-    
-    # a=webscrapper(link1)
-    # genres = a['genre']
-    # genre =', '.join(genres)
-    # sentence = a['stars']
-    # star =", ".join(sentence)
-    # print(a['video_length'])
-    # context = {
-    #     'movie':movie,
-    #     'title': a['title'],
-    #     'description':a['description'],
-    #     'release_date':a['release_date'],
-    #     'director':a['director'],
-    #     'duration':a['video_length'],
-    #     'stars':star,
-    #     'genres':genre
-    # }
+  
     star  = movie.movieactors[:-1]
     content = {
         'movie':movie,
@@ -96,10 +80,12 @@ def search(request,id):
 
 def searches(request,search):
 
-    
+     tvseries = Tvseries.objects.filter(tvtitle__icontains=search)
      movies = Allmovies.objects.filter(movietitle__icontains=search) 
+     
      context = {
-         'movies':movies
+         'movies':movies,
+         'tvseries':tvseries
      } 
      return render(request,'movies/searches.html',context) 
   

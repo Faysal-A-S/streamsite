@@ -1,0 +1,299 @@
+{% extends 'deshboard/base.html' %} 
+{% block title %} 
+    Add Movie Item page 
+{% endblock title %} 
+
+{% block content %}
+<!--Content Goes here-->
+<br /><br />
+<h1 class="text-center">Welcome to Online Movie Streaming Site SolutionTent</h1>
+<div class="container">
+    <div class="row justify-content-center">
+      <div class="col col-sm-10 col-md-8 col-xl-8">
+        <div class="card shadow-lg p-3 mb-5 rounded">
+          <form method="POST" action="">
+              {% csrf_token %}
+            <div class="card-header text-center bg-dark text-light">
+              <div class="card-title">
+                <h1>Add Movie Item</h1>
+              </div>
+            </div>
+            <div class="card-body">
+              <section class="form-group">
+                <label for="movie_title">Movie Title</label>
+                <input
+                  id="movie_title"
+                  name="movie_title"
+                  type="text"
+                  class="form-control"
+                  placeholder="Enter Movie Title"
+                  required
+                  autofocus
+                />
+              </section>
+              <section class="form-group">
+                <label for="movie_year">Movie Year</label>
+                <input
+                  id="movie_year"
+                  name="movie_year"
+                  type="text"
+                  class="form-control"
+                  placeholder="Enter Movie year "
+                  required
+                  autofocus
+                />
+              </section>
+              <section class="form-group">
+                <label for="movie_id">Movie ID</label>
+                <input
+                  id="movie_id"
+                  name="movie_id"
+                  type="number"
+                  class="form-control"
+                  placeholder="Enter Movie ID "
+                  required
+                  autofocus
+                />
+              </section>
+              <section class="form-group">
+                <label for="movie_quality">Movie Quality</label>
+                <input
+                  id="movie_quality"
+                  name="movie_quality"
+                  type="text"
+                  class="form-control"
+                  placeholder="Enter Movie Quality "
+                  required
+                  autofocus
+                />
+              </section>
+              <section class="form-group">
+                <label for="movie_category">Movie Category</label>
+                <input
+                  id="movie_category"
+                  name="movie_category"
+                  type="text"
+                  class="form-control"
+                  placeholder="Enter Movie Category"
+                  required
+                  autofocus
+                />
+              </section>
+              <section class="form-group">
+                <label for="movie_trailer">Movie Trailer</label>
+                <input
+                  id="movie_trailer"
+                  name="movie_trailer"
+                  type="text"
+                  class="form-control"
+                  placeholder="Enter Movie Trailer"
+                  required
+                  autofocus
+                />
+              </section>
+              <section class="form-group">
+                <label for="movie_ratings">Movie Rating</label>
+                <input
+                  id="movie_ratings"
+                  name="movie_ratings"
+                  type="number"
+                  step="any"
+                  class="form-control"
+                  placeholder="Enter Movie Rating"
+                  required
+                  autofocus
+                />
+              </section>
+              <section class="form-group">
+                <label for="movie_genre">Movie Genre</label>
+                <input
+                  id="movie_genre"
+                  name="movie_genre"
+                  type="text"
+                  class="form-control"
+                  placeholder="Enter Movie Genre"
+                  required
+                  autofocus
+                />
+              </section>
+              <section class="form-group">
+                <label for="movie_date">Movie Date</label>
+                <input
+                  id="movie_date"
+                  name="movie_date"
+                  type="date"
+                  class="form-control"
+                  placeholder="Enter Movie Genre"
+                  required
+                  autofocus
+                />
+              </section>
+              <section class="form-group">
+                <label for="movie_lang">Movie Language</label>
+                <input
+                  id="movie_lang"
+                  name="movie_lang"
+                  type="text"
+                  class="form-control"
+                  placeholder="Enter Movie Language"
+                  required
+                  autofocus
+                />
+              </section>
+              <section class="form-group">
+                <label for="movie_homepage">Movie Homepage</label>
+                <input
+                  id="movie_homepage"
+                  name="movie_homepage"
+                  type="text"
+                  class="form-control"
+                  placeholder="Enter Movie Homepage"
+                  required
+                  autofocus
+                />
+              </section>
+              <section class="form-group">
+                <label for="movie_runtime">Movie Runtime</label>
+                <input
+                  id="movie_runtime"
+                  name="movie_runtime"
+                  type="text"
+                  class="form-control"
+                  placeholder="Enter Movie Runtime"
+                  required
+                  autofocus
+                />
+              </section>
+              <section class="form-group">
+                <label for="movie_keywords">Movie Keywords</label>
+                <textarea
+                  id="movie_keywords"
+                  name="movie_keywords"
+                  class="form-control"
+                  placeholder="Enter Movie Keywords"
+                  required
+                  autofocus
+                ></textarea>
+              </section>
+              <section class="form-group">
+                <label for="movie_story">Movie Story</label>
+                <textarea
+                  id="movie_story"
+                  name="movie_story"
+                  class="form-control"
+                  placeholder="Enter Movie Story"
+                  required
+                  autofocus
+                ></textarea>
+              </section>
+              <section class="form-group">
+                <label for="movie_watchlink">Movie watch link</label>
+                <input
+                  id="movie_watchlink"
+                  name="movie_watchlink"
+                  type="url"
+                  class="form-control"
+                  placeholder="Enter Movie Link"
+                  required
+                  autofocus
+                />
+              </section>
+            </section>
+            <section class="form-group">
+                <label for="movie_subtitle">Movie Subtitle</label>
+                <textarea
+                  id="movie_subtitle"
+                  name="movie_subtitle"
+                  class="form-control"
+                  placeholder="Enter Movie Subtitle"
+                  required
+                  autofocus
+                ></textarea>
+              </section>
+              <section class="form-group">
+                <label for="movie_actors">Movie Actors</label>
+                <textarea
+                  id="movie_actors"
+                  name="movie_actors"
+                  class="form-control"
+                  placeholder="Enter Movie Actors"
+                  required
+                  autofocus
+                ></textarea>
+              </section>
+              <section class="form-group">
+                <label for="movie_size">Movie Size</label>
+                <input
+                  id="movie_size"
+                  name="movie_size"
+                  type="text"
+                  class="form-control"
+                  placeholder="Enter Movie Size"
+                  required
+                  autofocus
+                />
+              </section>
+              <section class="form-group">
+                <label for="poster">Movie Poster</label>
+                <input
+                  id="poster"
+                  name="poster"
+                  type="file"
+                  class="form-control"
+                  accept="image/*"
+                  required
+                  autofocus
+                />
+              </section>
+              <section class="form-group">
+                <label for="uploaded_user">Uploaded User</label>
+                <input
+                  id="uploaded_user"
+                  name="uploaded_user"
+                  type="text"
+                  class="form-control"
+                  placeholder="Uploaded User"
+                  required
+                  autofocus
+                />
+              </section>
+              <section class="form-group">
+                <label for="upload_time">Upload Time</label>
+                <input
+                  id="upload_time"
+                  name="upload_time"
+                  type="time"
+                  class="form-control"
+                  required
+                  autofocus
+                />
+              </section>
+              <section class="form-group">
+                <label for="views">Views</label>
+                <input
+                  id="views"
+                  name="views"
+                  type="number"
+                  class="form-control"
+                  placeholder="Enter Views"
+                  required
+                  autofocus
+                />
+              </section>
+              <section class="form-group">
+                <label for="published">Publish:</label>
+                <select name="published" id="published" class="form-control">
+                    <option value="0" selected> Draft</option>
+                    <option value="1">Publish</option>
+                </select>
+              </section>
+
+              
+              <button id="submit" type="submit" class=" btn btn-success" value="OK">Submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock content %}

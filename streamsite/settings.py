@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'movies',
+    'deshboard',
 ]
 
 MIDDLEWARE = [
@@ -77,7 +78,7 @@ WSGI_APPLICATION = 'streamsite.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'moviedom',
+        'NAME': 'moviedom1',
         'USER': 'root',
         'PASSWORD': 'helllord123',
         'HOST': '127.0.0.1',

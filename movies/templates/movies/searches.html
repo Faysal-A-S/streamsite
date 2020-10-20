@@ -47,20 +47,20 @@
                 <!-- MOVIES END -->
 
 <!-- 
-                TV SERIES  START -->
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="/search/1/" id="navbarDropdownMenuLink1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">TV Series</a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink1">
-                <a class="dropdown-item" href="#">ENGLISH TV SERIES</a>
-                <a class="dropdown-item" href="#">KOREAN TV SERIES</a>
-                <a class="dropdown-item" href="#">HINDI TV SERIES</a>
-                <a class="dropdown-item" href="#">BENGALI TV SERIES</a>
-                <a class="dropdown-item" href="#">BENGALI NATOK</a>
-                <a class="dropdown-item" href="#">CHINESE</a>
-                <a class="dropdown-item" href="#">INDIAN BANGLA</a>
-              </div>
-              </li>
-              <!-- TV SERIES END -->
+                    TV SERIES  START -->
+                    <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" href="/search/1/" id="navbarDropdownMenuLink1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">TV Series</a>
+                      <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink1">
+                        <a class="dropdown-item" href="/search/English Tv Series/">ENGLISH TV SERIES</a>
+                        <a class="dropdown-item" href="/search/Korean Tv Series/">KOREAN TV SERIES</a>
+                        <a class="dropdown-item" href="/search/Hindi Tv Series/">HINDI TV SERIES</a>
+                        <a class="dropdown-item" href="/search/Bengali Tv Series/">BENGALI TV SERIES</a>
+                        <a class="dropdown-item" href="/search/English Tv Series/">BENGALI NATOK</a>
+                        <a class="dropdown-item" href="/search/Chinese Tv Series/">CHINESE</a>
+                        <a class="dropdown-item" href="/search/English Tv Series/">INDIAN BANGLA</a>
+                      </div>
+                      </li>
+                      <!-- TV SERIES END -->
               <!-- GAMES START -->
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="/search/1/" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Games</a>
@@ -86,23 +86,43 @@
     </div>
   </nav>
  
-
+            <!-- Movies start-->
       <div class="row justify-content-center" style="margin-left: 15px !important;">
-       
-        {% for movie in movies %}
         
-      
-      <div class="card mt-5 mb-2 col-xl-2 col-lg-2 col-md-2  col-sm-6 col-xs-12 " style="width: 18rem; margin-left: 10px; ">
-        <a href="{% url 'video' movie.id %}"><img src="{{movie.poster.url}}" class="img-thumbnail"></a>
-        <div class="card-body">
-         <h5  class="card-title text-center">{{movie.movietitle}}</h5>
-         <!-- <div class="truncateLongTexts">
-          {{movie.description}}
-         </div> -->
-        
-        </div>
+          {% if movies %}
+            {% for movie in movies %}
+            
+          
+          <div class="card mt-5 mb-2 col-xl-2 col-lg-2 col-md-2  col-sm-6 col-xs-12 " style="width: 18rem; margin-left: 10px; ">
+            <a href="{% url 'video' movie.id %}"><img src="{{movie.poster.url}}" class="img-thumbnail"></a>
+            <div class="card-body">
+            <h5  class="card-title text-center">{{movie.movietitle}}</h5>
+            </div>
+          </div>
+          {% endfor %}
+        {% endif %}
       </div>
-      {% endfor %}
+      <!-- Movies end -->
+
+
+
+           <!-- tvseries start -->
+      <div class="row justify-content-center" style="margin-left: 15px !important;">
+        {% if tvseries %}
+          
+          {% for tv in tvseries %}
+            
+          <div class="card mt-5 mb-2 col-xl-2 col-lg-2 col-md-2  col-sm-6 col-xs-12 " style="width: 18rem; margin-left: 10px; ">
+            <a href="{% url 'video' tvseries.id %}"><img src="{{tvseries.poster.url}}" class="img-thumbnail"></a>
+            <div class="card-body">
+            <h5  class="card-title text-center">{{tvseries.tvtitle}}</h5>
+            
+            
+            </div>
+          </div>
+          
+          {% endfor %}
+        {% endif %}
       </div>
 
 
